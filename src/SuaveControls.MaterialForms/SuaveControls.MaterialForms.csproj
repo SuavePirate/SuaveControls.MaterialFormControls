@@ -40,6 +40,18 @@
     <Compile Include="BorderlessEntry.cs" />
     <Compile Include="BorderlessPicker.cs" />
     <Compile Include="BorderlessTimePicker.cs" />
+    <Compile Include="MaterialDatePicker.xaml.cs">
+      <DependentUpon>MaterialDatePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialEntry.xaml.cs">
+      <DependentUpon>MaterialEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialPicker.xaml.cs">
+      <DependentUpon>MaterialPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialTimePicker.xaml.cs">
+      <DependentUpon>MaterialTimePicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +67,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MaterialEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MaterialPicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MaterialDatePicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MaterialTimePicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
