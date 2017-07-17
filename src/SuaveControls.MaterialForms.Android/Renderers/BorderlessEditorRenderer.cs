@@ -14,10 +14,10 @@ using Xamarin.Forms;
 using SuaveControls.MaterialForms;
 using SuaveControls.MaterialForms.Android.Renderers;
 
-[assembly: ExportRenderer(typeof(BorderlessEditory), typeof(BorderlessEditorRenderer))]
+[assembly: ExportRenderer(typeof(BorderlessEditor), typeof(BorderlessEditorRenderer))]
 namespace SuaveControls.MaterialForms.Android.Renderers
 {
-    public class BorderlessEditorRenderer : EntryRenderer
+    public class BorderlessEditorRenderer : EditorRenderer
     {
         public static void Init() { }
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)

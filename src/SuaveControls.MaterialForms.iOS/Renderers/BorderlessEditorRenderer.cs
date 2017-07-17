@@ -19,7 +19,6 @@ namespace SuaveControls.MaterialForms.iOS.Renderers
             base.OnElementPropertyChanged(sender, e);
 
             Control.Layer.BorderWidth = 0;
-            Control.BorderStyle = UITextBorderStyle.None;
         }
     }
 }

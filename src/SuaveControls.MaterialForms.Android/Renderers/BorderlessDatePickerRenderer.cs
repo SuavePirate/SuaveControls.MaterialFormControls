@@ -13,6 +13,7 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using SuaveControls.MaterialForms;
 using SuaveControls.MaterialForms.Android.Renderers;
+using DatePicker = Xamarin.Forms.DatePicker;
 
 [assembly: ExportRenderer(typeof(BorderlessDatePicker), typeof(BorderlessDatePickerRenderer))]
 namespace SuaveControls.MaterialForms.Android.Renderers
