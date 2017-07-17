@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ExampleMaterialApp"
+             xmlns:suave="clr-namespace:SuaveControls.MaterialForms;assembly=SuaveControls.MaterialForms"
+             x:Class="ExampleMaterialApp.MainPage">
+
+    <ScrollView>
+        <StackLayout Spacing="16" Margin="16">
+            <Label Text="Material Forms!" Margin="32" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            <suave:MaterialEntry Placeholder="Email" Keyboard="Email" AccentColor="Green"/>
+            <suave:MaterialEntry Placeholder="Regular Text" AccentColor="Orange"/>
+            <suave:MaterialEntry Placeholder="Number" Keyboard="Numeric" AccentColor="Orange"/>
+            <suave:MaterialEntry IsPassword="True" Placeholder="Password" AccentColor="Blue"/>
+            <suave:MaterialDatePicker Placeholder="Date Picker" AccentColor="BlueViolet"/>
+            <suave:MaterialTimePicker Placeholder="Time Picker" AccentColor="HotPink" />
+            <suave:MaterialPicker x:Name="PickerDemo" Placeholder="Picker" AccentColor="LightGoldenrodYellow"/>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

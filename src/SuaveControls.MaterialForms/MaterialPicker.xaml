@@ -9,7 +9,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="1"/>
             </Grid.RowDefinitions>
-            <views:BorderlessPicker x:Name="Picker" Style="{StaticResource PrimaryPicker}" Margin="0,12,0,0" ItemsSource="{Binding Items}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"/>
+            <views:BorderlessPicker x:Name="Picker" Margin="0,12,0,0" ItemsSource="{Binding Items}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"/>
             <Label x:Name="HiddenLabel" FontSize="10" IsVisible="False" Margin="0"/>
             <BoxView x:Name="BottomBorder" BackgroundColor="Gray" Grid.Row="1" HeightRequest="1" Margin="0" HorizontalOptions="FillAndExpand"/>
             <BoxView x:Name="HiddenBottomBorder" BackgroundColor="Gray" Grid.Row="1" HeightRequest="1" Margin="0" WidthRequest="0" HorizontalOptions="Center"/>
