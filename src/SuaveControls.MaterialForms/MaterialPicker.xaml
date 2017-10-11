@@ -15,7 +15,11 @@
                 ItemsSource="{Binding Items}"
                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
-            <Label x:Name="HiddenLabel" FontSize="10" IsVisible="False" Margin="0"/>
+            <Label x:Name="HiddenLabel"
+                FontSize="10"
+                IsVisible="False"
+                Margin="0"
+                VerticalOptions="Start" />
             <BoxView x:Name="BottomBorder" BackgroundColor="Gray" Grid.Row="1" HeightRequest="1" Margin="0" HorizontalOptions="FillAndExpand"/>
             <BoxView x:Name="HiddenBottomBorder" BackgroundColor="Gray" Grid.Row="1" HeightRequest="1" Margin="0" WidthRequest="0" HorizontalOptions="Center"/>
         </Grid>

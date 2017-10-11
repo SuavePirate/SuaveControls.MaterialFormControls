@@ -16,7 +16,11 @@ namespace SuaveControls.MaterialForms
         public static BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(IList), typeof(MaterialPicker), null);
         public static BindableProperty SelectedIndexProperty = BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(MaterialPicker), 0, BindingMode.TwoWay);
         public static BindableProperty AccentColorProperty = BindableProperty.Create(nameof(AccentColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Accent);
-        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(MaterialPicker), null, BindingMode.TwoWay);
+        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(MaterialPicker), null, BindingMode.TwoWay, propertyChanged: (bindable, oldValue, newValue) => 
+        {
+            var matPicker = (MaterialPicker)bindable;
+			matPicker.HiddenLabel.IsVisible = !string.IsNullOrEmpty(newValue?.ToString());
+        });
 
 		public object SelectedItem
 		{
