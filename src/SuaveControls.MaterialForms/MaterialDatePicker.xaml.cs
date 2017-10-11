@@ -107,8 +107,10 @@ namespace SuaveControls.MaterialForms
             EntryField.BindingContext = this;
             EntryField.Focused += (s, a) =>
             {
-                EntryField.Unfocus();
-                Picker.Focus();
+				Device.BeginInvokeOnMainThread(() => {
+					EntryField.Unfocus();
+					Picker.Focus();
+				});
             };
             Picker.Focused += async (s, a) =>
             {
