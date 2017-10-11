@@ -22,7 +22,8 @@
                 Placeholder="Picker"
                 AccentColor="Maroon"
                 Items="{Binding PickerData}"
-                SelectedItem="{Binding PickerSelectedItem}" />
+                SelectedItem="{Binding PickerSelectedItem}"
+                SelectedIndexChangedCommand="{Binding PickerSelectedIndexChangedCmd}" />
 
         </StackLayout>
     </ScrollView>

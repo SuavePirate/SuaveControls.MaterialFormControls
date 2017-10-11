@@ -1,5 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace ExampleMaterialApp
 {
@@ -8,6 +11,7 @@ namespace ExampleMaterialApp
 
         public ObservableCollection<Fruit> PickerData { get; set; }
         public Fruit PickerSelectedItem { get; set; }
+        public ICommand PickerSelectedIndexChangedCmd { get; }
 
         public MainViewModel()
         {
@@ -19,6 +23,8 @@ namespace ExampleMaterialApp
             };
 
             PickerSelectedItem = PickerData[PickerData.Count - 1];
+
+            PickerSelectedIndexChangedCmd = new Command<Fruit>((selectedFruit) => Debug.WriteLine($"PickerSelectedIndexChangedCmd => {selectedFruit}"));
         }
 
         // Fody will take care of that

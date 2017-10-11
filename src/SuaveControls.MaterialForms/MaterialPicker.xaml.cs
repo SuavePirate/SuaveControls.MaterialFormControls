@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace SuaveControls.MaterialForms
@@ -21,6 +22,13 @@ namespace SuaveControls.MaterialForms
             var matPicker = (MaterialPicker)bindable;
 			matPicker.HiddenLabel.IsVisible = !string.IsNullOrEmpty(newValue?.ToString());
         });
+        public static BindableProperty SelectedIndexChangedCommandProperty = BindableProperty.Create(nameof(SelectedIndexChangedCommand), typeof(ICommand), typeof(MaterialPicker), null);
+
+        public ICommand SelectedIndexChangedCommand
+        {
+            get { return (ICommand)GetValue(SelectedIndexChangedCommandProperty); }
+			set { SetValue(SelectedIndexChangedCommandProperty, value); }
+        }
 
 		public object SelectedItem
 		{
@@ -92,6 +100,12 @@ namespace SuaveControls.MaterialForms
         {
             InitializeComponent();
             Picker.BindingContext = this;
+            // TODO: Possible memory leak?
+            Picker.SelectedIndexChanged += (sender, e) => 
+            {
+                SelectedIndexChangedCommand?.Execute(Picker.SelectedItem);
+            };
+
             Picker.Focused += async (s, a) =>
             {
                 HiddenBottomBorder.BackgroundColor = AccentColor;
@@ -134,5 +148,7 @@ namespace SuaveControls.MaterialForms
         }
 
         public Picker GetUnderlyingPicker() => Picker;
+
+
     }
 }
