@@ -18,7 +18,11 @@
             <suave:MaterialEntry IsPassword="True" Placeholder="Password" AccentColor="Blue"/>
             <suave:MaterialDatePicker Placeholder="Date Picker" AccentColor="BlueViolet"/>
             <suave:MaterialTimePicker Placeholder="Time Picker" AccentColor="HotPink" />
-            <suave:MaterialPicker x:Name="PickerDemo" Placeholder="Picker" AccentColor="Maroon" Items="{Binding PickerData}" />
+            <suave:MaterialPicker 
+                Placeholder="Picker"
+                AccentColor="Maroon"
+                Items="{Binding PickerData}"
+                SelectedItem="{Binding PickerSelectedItem}" />
 
         </StackLayout>
     </ScrollView>

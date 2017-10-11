@@ -7,6 +7,7 @@ namespace ExampleMaterialApp
     {
 
         public ObservableCollection<Fruit> PickerData { get; set; }
+        public Fruit PickerSelectedItem { get; set; }
 
         public MainViewModel()
         {
@@ -16,6 +17,8 @@ namespace ExampleMaterialApp
                 new Fruit { Id = 2, Name = "Banana" },
                 new Fruit { Id = 3, Name = "Orange" }
             };
+
+            PickerSelectedItem = PickerData[PickerData.Count - 1];
         }
 
         // Fody will take care of that
