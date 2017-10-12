@@ -1,28 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace SuaveControls.MaterialForms
 {
     public partial class MaterialPicker : ContentView
     {
-
-
         public static BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialPicker), defaultBindingMode: BindingMode.TwoWay);
         public static BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialPicker), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (bindable, oldVal, newval) =>
         {
-            var matEntry = (MaterialPicker)bindable;
-            matEntry.Picker.Title = (string)newval;
-            matEntry.HiddenLabel.Text = (string)newval;
+            var matPicker = (MaterialPicker)bindable;
+            matPicker.Picker.Title = (string)newval;
+            matPicker.HiddenLabel.Text = (string)newval;
         });
-        public static BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(List<string>), typeof(MaterialPicker), null);
+        public static BindableProperty ItemsProperty = BindableProperty.Create(nameof(Items), typeof(IList), typeof(MaterialPicker), null);
         public static BindableProperty SelectedIndexProperty = BindableProperty.Create(nameof(SelectedIndex), typeof(int), typeof(MaterialPicker), 0, BindingMode.TwoWay);
         public static BindableProperty AccentColorProperty = BindableProperty.Create(nameof(AccentColor), typeof(Color), typeof(MaterialPicker), defaultValue: Color.Accent);
+        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(MaterialPicker), null, BindingMode.TwoWay, propertyChanged: (bindable, oldValue, newValue) => 
+        {
+            var matPicker = (MaterialPicker)bindable;
+			matPicker.HiddenLabel.IsVisible = !string.IsNullOrEmpty(newValue?.ToString());
+        });
+        public static BindableProperty SelectedIndexChangedCommandProperty = BindableProperty.Create(nameof(SelectedIndexChangedCommand), typeof(ICommand), typeof(MaterialPicker), null);
+
+        public ICommand SelectedIndexChangedCommand
+        {
+            get { return (ICommand)GetValue(SelectedIndexChangedCommandProperty); }
+			set { SetValue(SelectedIndexChangedCommandProperty, value); }
+        }
+
+		public object SelectedItem
+		{
+			get { return GetValue(SelectedItemProperty); }
+			set { SetValue(SelectedItemProperty, value); }
+		}
 
         public int SelectedIndex
         {
@@ -36,11 +48,11 @@ namespace SuaveControls.MaterialForms
             }
         }
 
-        public List<string> Items
+        public IList Items
         {
             get
             {
-                return (List<string>)GetValue(ItemsProperty);
+                return (IList)GetValue(ItemsProperty);
             }
             set
             {
@@ -71,6 +83,7 @@ namespace SuaveControls.MaterialForms
                 SetValue(TextProperty, value);
             }
         }
+
         public string Placeholder
         {
             get
@@ -82,10 +95,17 @@ namespace SuaveControls.MaterialForms
                 SetValue(PlaceholderProperty, value);
             }
         }
+
         public MaterialPicker()
         {
             InitializeComponent();
             Picker.BindingContext = this;
+            // TODO: Possible memory leak?
+            Picker.SelectedIndexChanged += (sender, e) => 
+            {
+                SelectedIndexChangedCommand?.Execute(Picker.SelectedItem);
+            };
+
             Picker.Focused += async (s, a) =>
             {
                 HiddenBottomBorder.BackgroundColor = AccentColor;
@@ -127,10 +147,7 @@ namespace SuaveControls.MaterialForms
 
         }
 
-        public Picker GetUnderlyingPicker()
-        {
-            return Picker;
-        }
+        public Picker GetUnderlyingPicker() => Picker;
 
 
     }

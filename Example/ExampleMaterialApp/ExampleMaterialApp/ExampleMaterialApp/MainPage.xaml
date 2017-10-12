@@ -1,9 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ExampleMaterialApp"
              xmlns:suave="clr-namespace:SuaveControls.MaterialForms;assembly=SuaveControls.MaterialForms"
              x:Class="ExampleMaterialApp.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
 
     <ScrollView>
         <StackLayout Spacing="16" Margin="16">
@@ -14,7 +18,12 @@
             <suave:MaterialEntry IsPassword="True" Placeholder="Password" AccentColor="Blue"/>
             <suave:MaterialDatePicker Placeholder="Date Picker" AccentColor="BlueViolet"/>
             <suave:MaterialTimePicker Placeholder="Time Picker" AccentColor="HotPink" />
-            <suave:MaterialPicker x:Name="PickerDemo" Placeholder="Picker" AccentColor="Maroon"/>
+            <suave:MaterialPicker 
+                Placeholder="Picker"
+                AccentColor="Maroon"
+                Items="{Binding PickerData}"
+                SelectedItem="{Binding PickerSelectedItem}"
+                SelectedIndexChangedCommand="{Binding PickerSelectedIndexChangedCmd}" />
 
         </StackLayout>
     </ScrollView>
