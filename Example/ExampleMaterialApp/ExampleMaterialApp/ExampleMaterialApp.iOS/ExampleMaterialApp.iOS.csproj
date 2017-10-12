@@ -145,7 +145,7 @@
       <Name>SuaveControls.MaterialForms</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExampleMaterialApp\ExampleMaterialApp.csproj">
-      <Project>{a338e9c0-5d68-48b5-8fc4-7880e6546240}</Project>
+      <Project>{158C19A4-FB11-44F8-AF91-784B99E6211B}</Project>
       <Name>ExampleMaterialApp</Name>
     </ProjectReference>
   </ItemGroup>

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuaveControls.MaterialForms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuaveControls.MaterialForms.UWP", "SuaveControls.MaterialForms.UWP\SuaveControls.MaterialForms.UWP.csproj", "{C69E86AB-83FF-40AE-871E-CFF452AA426F}"
 EndProject
+Project("{5DD5E4FA-CB73-4610-85AB-557B54E96AA9}") = "SuaveControls.MaterialForms.NuGet", "SuaveControls.MaterialForms.NuGet\SuaveControls.MaterialForms.NuGet.nuproj", "{81C8331B-A02B-45E0-AB95-CB2B2223672C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,22 @@ Global
 		{C69E86AB-83FF-40AE-871E-CFF452AA426F}.Release|x64.Build.0 = Release|x64
 		{C69E86AB-83FF-40AE-871E-CFF452AA426F}.Release|x86.ActiveCfg = Release|x86
 		{C69E86AB-83FF-40AE-871E-CFF452AA426F}.Release|x86.Build.0 = Release|x86
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Debug|ARM.Build.0 = Debug|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Debug|x64.Build.0 = Debug|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Debug|x86.Build.0 = Debug|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Release|ARM.ActiveCfg = Release|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Release|ARM.Build.0 = Release|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Release|x64.ActiveCfg = Release|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Release|x64.Build.0 = Release|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Release|x86.ActiveCfg = Release|Any CPU
+		{81C8331B-A02B-45E0-AB95-CB2B2223672C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
