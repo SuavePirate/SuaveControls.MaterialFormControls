@@ -130,6 +130,9 @@ namespace SuaveControls.MaterialForms
                 HiddenBottomBorder.BackgroundColor = AccentColor;
                 HiddenLabel.TextColor = AccentColor;
                 HiddenLabel.IsVisible = true;
+		if (string.IsNullOrEmpty(CustomDateFormat))
+                    CustomDateFormat = _defaultDateFormat;
+                EntryField.Text = Picker.Date.ToString(CustomDateFormat, CultureInfo.CurrentCulture);
                 if (string.IsNullOrEmpty(EntryField.Text))
                 {
                     // animate both at the same time
@@ -165,12 +168,6 @@ namespace SuaveControls.MaterialForms
             };
 
             Picker.DateSelected += Picker_DateSelected;
-	    
-	    /* Set Today's date as Initial Value */
-            if (string.IsNullOrEmpty(CustomDateFormat))
-                CustomDateFormat = _defaultDateFormat;
-            Picker.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-            EntryField.Text = Picker.Date.ToString(CustomDateFormat, CultureInfo.CurrentCulture);
         }
 
         private void Picker_DateSelected(object sender, DateChangedEventArgs e)
