@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,19 @@ namespace SuaveControls.MaterialForms
     public partial class MaterialDatePicker : ContentView
     {
 
-
+        public static BindableProperty CustomDateFormatProperty = BindableProperty.Create(nameof(CustomDateFormat), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay);
+        public string CustomDateFormat
+        {
+            get
+            {
+                return (string)GetValue(CustomDateFormatProperty);
+            }
+            set
+            {
+                SetValue(CustomDateFormatProperty, value);
+            }
+        }
+        private static string _defaultDateFormat = "dddd, MMMM d, yyyy";
         public static BindableProperty DateProperty = BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay);
         public static BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay);
         public static BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialDatePicker), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (bindable, oldVal, newval) =>
@@ -117,6 +130,9 @@ namespace SuaveControls.MaterialForms
                 HiddenBottomBorder.BackgroundColor = AccentColor;
                 HiddenLabel.TextColor = AccentColor;
                 HiddenLabel.IsVisible = true;
+		if (string.IsNullOrEmpty(CustomDateFormat))
+                    CustomDateFormat = _defaultDateFormat;
+                EntryField.Text = Picker.Date.ToString(CustomDateFormat, CultureInfo.CurrentCulture);
                 if (string.IsNullOrEmpty(EntryField.Text))
                 {
                     // animate both at the same time
@@ -156,7 +172,9 @@ namespace SuaveControls.MaterialForms
 
         private void Picker_DateSelected(object sender, DateChangedEventArgs e)
         {
-            EntryField.Text = e.NewDate.ToString("dddd, MMMM d, yyyy");
+            if (string.IsNullOrEmpty(CustomDateFormat))
+                CustomDateFormat = _defaultDateFormat;
+            EntryField.Text = e.NewDate.ToString(CustomDateFormat, CultureInfo.CurrentCulture);
             Date = e.NewDate;
         }
     }
