@@ -946,8 +946,6 @@ namespace ExampleMaterialApp.Droid
 			global::SuaveControls.MaterialForms.Android.Resource.Layout.select_dialog_multichoice_material = global::ExampleMaterialApp.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::SuaveControls.MaterialForms.Android.Resource.Layout.select_dialog_singlechoice_material = global::ExampleMaterialApp.Droid.Resource.Layout.select_dialog_singlechoice_material;
 			global::SuaveControls.MaterialForms.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::ExampleMaterialApp.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::SuaveControls.MaterialForms.Android.Resource.String.ApplicationName = global::ExampleMaterialApp.Droid.Resource.String.ApplicationName;
-			global::SuaveControls.MaterialForms.Android.Resource.String.Hello = global::ExampleMaterialApp.Droid.Resource.String.Hello;
 			global::SuaveControls.MaterialForms.Android.Resource.String.abc_action_bar_home_description = global::ExampleMaterialApp.Droid.Resource.String.abc_action_bar_home_description;
 			global::SuaveControls.MaterialForms.Android.Resource.String.abc_action_bar_home_description_format = global::ExampleMaterialApp.Droid.Resource.String.abc_action_bar_home_description_format;
 			global::SuaveControls.MaterialForms.Android.Resource.String.abc_action_bar_home_subtitle_description_format = global::ExampleMaterialApp.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
@@ -4722,12 +4720,6 @@ namespace ExampleMaterialApp.Droid
 		
 		public partial class String
 		{
-			
-			// aapt resource value: 0x7f080027
-			public const int ApplicationName = 2131230759;
-			
-			// aapt resource value: 0x7f080026
-			public const int Hello = 2131230758;
 			
 			// aapt resource value: 0x7f08000f
 			public const int abc_action_bar_home_description = 2131230735;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -104,6 +105,7 @@ namespace SuaveControls.MaterialForms
             Picker.SelectedIndexChanged += (sender, e) => 
             {
                 SelectedIndexChangedCommand?.Execute(Picker.SelectedItem);
+                SelectedIndexChanged?.Invoke(sender,e);
             };
 
             Picker.Focused += async (s, a) =>
@@ -149,6 +151,6 @@ namespace SuaveControls.MaterialForms
 
         public Picker GetUnderlyingPicker() => Picker;
 
-
+        public event EventHandler SelectedIndexChanged;
     }
 }
