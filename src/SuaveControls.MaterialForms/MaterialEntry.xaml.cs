@@ -11,6 +11,10 @@ namespace SuaveControls.MaterialForms
 {
     public partial class MaterialEntry : ContentView
     {
+        public event EventHandler<FocusEventArgs> EntryFocused;
+        public event EventHandler<FocusEventArgs> EntryUnfocused;
+
+
         public static BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEntry), defaultBindingMode: BindingMode.TwoWay);
         public static BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialEntry), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (bindable, oldVal, newval) =>
         {
@@ -93,42 +97,64 @@ namespace SuaveControls.MaterialForms
             EntryField.BindingContext = this;
             EntryField.Focused += async (s, a) =>
             {
-                HiddenBottomBorder.BackgroundColor = AccentColor;
-                HiddenLabel.TextColor = AccentColor;
-                HiddenLabel.IsVisible = true;
-                if (string.IsNullOrEmpty(EntryField.Text))
-                {
-                    // animate both at the same time
-                    await Task.WhenAll(
-                        HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200),
-                        HiddenLabel.FadeTo(1, 60),
-                        HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y - EntryField.Height + 4, 200, Easing.BounceIn)
-                     );
-                    EntryField.Placeholder = null;
-                }
-                else
-                {
-                    await HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200);
-                }
+                EntryFocused?.Invoke(this, a);
+                await CalculateLayoutFocused();
+
             };
             EntryField.Unfocused += async (s, a) =>
             {
-                HiddenLabel.TextColor = Color.Gray;
-                if (string.IsNullOrEmpty(EntryField.Text))
+                EntryUnfocused?.Invoke(this, a);
+                await CalculateLayoutUnfocused();
+            };
+            EntryField.PropertyChanged += async (sender, args) =>
+            {
+                if (args.PropertyName == nameof(EntryField.Text) && !EntryField.IsFocused && !String.IsNullOrEmpty(EntryField.Text))
                 {
-                    // animate both at the same time
-                    await Task.WhenAll(
-                        HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, 0, BottomBorder.Height), 200),
-                        HiddenLabel.FadeTo(0, 180),
-                        HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y, 200, Easing.BounceIn)
-                     );
-                    EntryField.Placeholder = Placeholder;
-                }
-                else
-                {
-                    await HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, 0, BottomBorder.Height), 200);
+                    await CalculateLayoutUnfocused();
                 }
             };
         }
+
+        private async Task CalculateLayoutUnfocused()
+        {
+            HiddenLabel.TextColor = Color.Gray;
+            if (string.IsNullOrEmpty(EntryField.Text))
+            {
+                // animate both at the same time
+                await Task.WhenAll(
+                    HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, 0, BottomBorder.Height), 200),
+                    HiddenLabel.FadeTo(0, 180),
+                    HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y, 200, Easing.BounceIn)
+                );
+                EntryField.Placeholder = Placeholder;
+            }
+            else
+            {
+                HiddenLabel.IsVisible = true;
+                await HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, 0, BottomBorder.Height), 200);
+            }
+        }
+
+        private async Task CalculateLayoutFocused()
+        {
+            HiddenLabel.IsVisible = true;
+            HiddenLabel.TextColor = AccentColor;
+            HiddenBottomBorder.BackgroundColor = AccentColor;
+            if (string.IsNullOrEmpty(EntryField.Text))
+            {
+                // animate both at the same time
+                await Task.WhenAll(
+                    HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200),
+                    HiddenLabel.FadeTo(1, 60),
+                    HiddenLabel.TranslateTo(HiddenLabel.TranslationX, EntryField.Y - EntryField.Height + 4, 200, Easing.BounceIn)
+                );
+                EntryField.Placeholder = null;
+            }
+            else
+            {
+                await HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200);
+            }
+        }
+
     }
 }
