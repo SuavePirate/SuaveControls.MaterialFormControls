@@ -13,7 +13,7 @@ namespace SuaveControls.MaterialForms
     {
         public event EventHandler<FocusEventArgs> EntryFocused;
         public event EventHandler<FocusEventArgs> EntryUnfocused;
-
+        public event EventHandler<TextChangedEventArgs> TextChanged;
 
         public static BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(MaterialEntry), defaultBindingMode: BindingMode.TwoWay);
         public static BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(MaterialEntry), defaultBindingMode: BindingMode.TwoWay, propertyChanged: (bindable, oldVal, newval) =>
@@ -77,7 +77,7 @@ namespace SuaveControls.MaterialForms
             }
             set
             {
-                SetValue(TextProperty, value);
+               SetValue(TextProperty, value);
             }
         }
         public string Placeholder
@@ -95,6 +95,11 @@ namespace SuaveControls.MaterialForms
         {
             InitializeComponent();
             EntryField.BindingContext = this;
+            EntryField.TextChanged += async (s, a) =>
+            {
+                TextChanged?.Invoke(s, a);
+            };
+
             EntryField.Focused += async (s, a) =>
             {
                 EntryFocused?.Invoke(this, a);
