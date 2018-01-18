@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}</ProjectGuid>
+    <Description>MaterialFormControls</Description>
+    <PackageId>MaterialFormControls</PackageId>
+    <PackageVersion>2018.01.18-pre1</PackageVersion>
+    <Authors>SuavePirate</Authors>
+    <DevelopmentDependency>false</DevelopmentDependency>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SuaveControls.MaterialForms.NuGet</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>SuaveControls.MaterialForms.NuGet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Owners>SuavePirate</Owners>
+    <PackageTags>Xamarin Material MaterialDesign Forms Input</PackageTags>
+    <Title>Material Design Xamarin Forms Elements</Title>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <Summary>Some Xamarin.Forms input fields built to Material Design Standards
+
+</Summary>
+    <PackageProjectUrl>https://github.com/SuavePirate/SuaveControls.MaterialFormControls</PackageProjectUrl>
+    <PackageIconUrl>https://alexdunndev.files.wordpress.com/2017/04/xamarinmaterialentry.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/SuavePirate/SuaveControls.MaterialFormControls/blob/master/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Packaging">
+      <Version>0.2.0</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuaveControls.MaterialForms\SuaveControls.MaterialForms.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>SuaveControls.MaterialForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuaveControls.MaterialForms.Android\SuaveControls.MaterialForms.Android.csproj">
+      <Project>{C646A031-62AB-47AD-B584-B96270522CCD}</Project>
+      <Name>SuaveControls.MaterialForms.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuaveControls.MaterialForms.iOS\SuaveControls.MaterialForms.iOS.csproj">
+      <Project>{A9A6301A-0BD0-46A4-9AA7-E96491FA3965}</Project>
+      <Name>SuaveControls.MaterialForms.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets')" />
+</Project>

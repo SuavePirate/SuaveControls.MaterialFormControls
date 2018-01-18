@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuaveControls.MaterialForms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuaveControls.MaterialForms.UWP", "SuaveControls.MaterialForms.UWP\SuaveControls.MaterialForms.UWP.csproj", "{C69E86AB-83FF-40AE-871E-CFF452AA426F}"
 EndProject
+Project("{5DD5E4FA-CB73-4610-85AB-557B54E96AA9}") = "SuaveControls.MaterialForms.NuGet", "SuaveControls.MaterialForms.NuGet\SuaveControls.MaterialForms.NuGet.nuproj", "{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,22 @@ Global
 		{C69E86AB-83FF-40AE-871E-CFF452AA426F}.Release|x64.Build.0 = Release|x64
 		{C69E86AB-83FF-40AE-871E-CFF452AA426F}.Release|x86.ActiveCfg = Release|x86
 		{C69E86AB-83FF-40AE-871E-CFF452AA426F}.Release|x86.Build.0 = Release|x86
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Debug|x64.Build.0 = Debug|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Debug|x86.Build.0 = Debug|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Release|ARM.Build.0 = Release|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Release|x64.ActiveCfg = Release|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Release|x64.Build.0 = Release|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Release|x86.ActiveCfg = Release|Any CPU
+		{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
