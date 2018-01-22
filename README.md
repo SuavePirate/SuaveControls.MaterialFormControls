@@ -8,7 +8,7 @@ This project is still a work in progress and bound to see updates.
 Use the preview package from NuGet or clone the repository and reference the projects directly:
 
 ```
-Install-Package MaterialFormControls -Version 2018.1.18-pre1
+Install-Package MaterialFormControls -Version 2018.1.21-pre2
 ```
 
 ## Usage
