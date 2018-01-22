@@ -42,7 +42,11 @@ namespace SuaveControls.MaterialForms
             var matEntry = (MaterialEntry)bindable;
             matEntry.UpdateValidation();
         });
-        public static BindableProperty DefaultColorProperty = BindableProperty.Create(nameof(DefaultColor), typeof(Color), typeof(MaterialEntry), Color.Gray);
+        public static BindableProperty DefaultColorProperty = BindableProperty.Create(nameof(DefaultColor), typeof(Color), typeof(MaterialEntry), Color.Gray, propertyChanged: (bindable, oldVal, newVal) =>
+        {
+            var matEntry = (MaterialEntry)bindable;
+            matEntry.UpdateValidation();
+        });
         public static BindableProperty IsValidProperty = BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEntry), true, propertyChanged: (bindable, oldVal, newVal) =>
         {
             var matEntry = (MaterialEntry)bindable;
@@ -150,6 +154,7 @@ namespace SuaveControls.MaterialForms
         {
             InitializeComponent();
             EntryField.BindingContext = this;
+            BottomBorder.BackgroundColor = DefaultColor;
             EntryField.TextChanged += (s, a) =>
             {
                 TextChanged?.Invoke(s, a);
@@ -173,6 +178,8 @@ namespace SuaveControls.MaterialForms
                     await CalculateLayoutUnfocused();
                 }
             };
+
+            UpdateValidation();
         }
 
         /// <summary>
@@ -182,6 +189,7 @@ namespace SuaveControls.MaterialForms
         private async Task CalculateLayoutUnfocused()
         {
             HiddenLabel.TextColor = DefaultColor;
+            BottomBorder.BackgroundColor = DefaultColor;
             if (string.IsNullOrEmpty(EntryField.Text))
             {
                 // animate both at the same time
@@ -231,8 +239,8 @@ namespace SuaveControls.MaterialForms
             if(IsValid)
             {
 
-                BottomBorder.Color = DefaultColor;
-                HiddenBottomBorder.Color = AccentColor;
+                BottomBorder.BackgroundColor = DefaultColor;
+                HiddenBottomBorder.BackgroundColor = AccentColor;
                 if(IsFocused)
                 {
                     HiddenLabel.TextColor = AccentColor;
@@ -244,8 +252,8 @@ namespace SuaveControls.MaterialForms
             }
             else
             {
-                BottomBorder.Color = InvalidColor;
-                HiddenBottomBorder.Color = InvalidColor;
+                BottomBorder.BackgroundColor = InvalidColor;
+                HiddenBottomBorder.BackgroundColor = InvalidColor;
                 HiddenLabel.TextColor = InvalidColor;
             }
         }
