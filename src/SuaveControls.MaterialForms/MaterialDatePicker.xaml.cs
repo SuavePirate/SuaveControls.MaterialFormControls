@@ -171,10 +171,11 @@ namespace SuaveControls.MaterialForms
             BottomBorder.BackgroundColor = DefaultColor;
             EntryField.Focused += (s, a) =>
             {
-				Device.BeginInvokeOnMainThread(() => {
-					EntryField.Unfocus();
-					Picker.Focus();
-				});
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    EntryField.Unfocus();
+                    Picker.Focus();
+                });
             };
             Picker.Focused += async (s, a) =>
             {
@@ -198,8 +199,9 @@ namespace SuaveControls.MaterialForms
             };
             Picker.Unfocused += async (s, a) =>
             {
-                HiddenLabel.TextColor = DefaultColor;
-		        Picker_DateSelected(s, new DateChangedEventArgs(Picker.Date, Picker.Date));
+                if (IsValid)
+                    HiddenLabel.TextColor = DefaultColor;
+                Picker_DateSelected(s, new DateChangedEventArgs(Picker.Date, Picker.Date));
                 if (string.IsNullOrEmpty(EntryField.Text))
                 {
                     // animate both at the same time

@@ -188,8 +188,11 @@ namespace SuaveControls.MaterialForms
         /// <returns>The layout unfocused.</returns>
         private async Task CalculateLayoutUnfocused()
         {
-            HiddenLabel.TextColor = DefaultColor;
-            BottomBorder.BackgroundColor = DefaultColor;
+            if(IsValid)
+            {
+                HiddenLabel.TextColor = DefaultColor;
+                BottomBorder.BackgroundColor = DefaultColor;
+            }
             if (string.IsNullOrEmpty(EntryField.Text))
             {
                 // animate both at the same time
