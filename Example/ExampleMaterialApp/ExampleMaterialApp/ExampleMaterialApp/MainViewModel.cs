@@ -8,10 +8,23 @@ namespace ExampleMaterialApp
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-
+        private bool _isValid = true;
         public ObservableCollection<Fruit> PickerData { get; set; }
         public Fruit PickerSelectedItem { get; set; }
         public ICommand PickerSelectedIndexChangedCmd { get; }
+        public ICommand SwitchValidCommand { get; }
+        public bool IsValid
+        {
+            get
+            {
+                return _isValid;
+            }
+            set
+            {
+                _isValid = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsValid)));
+            }
+        }
 
         public MainViewModel()
         {
@@ -25,6 +38,7 @@ namespace ExampleMaterialApp
             PickerSelectedItem = PickerData[PickerData.Count - 1];
 
             PickerSelectedIndexChangedCmd = new Command<Fruit>((selectedFruit) => Debug.WriteLine($"PickerSelectedIndexChangedCmd => {selectedFruit}"));
+            SwitchValidCommand = new Command(() => IsValid = !IsValid);
         }
 
         // Fody will take care of that

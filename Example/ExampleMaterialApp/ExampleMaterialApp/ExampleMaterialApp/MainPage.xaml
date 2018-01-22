@@ -12,19 +12,21 @@
     <ScrollView>
         <StackLayout Spacing="16" Margin="16">
             <Label Text="Material Forms!" Margin="32" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-            <suave:MaterialEntry Placeholder="Email" Keyboard="Email" AccentColor="Green"/>
-            <suave:MaterialEntry Placeholder="Regular Text" AccentColor="Orange"/>
-            <suave:MaterialEntry Placeholder="Number" Keyboard="Numeric" AccentColor="Red"/>
-            <suave:MaterialEntry IsPassword="True" Placeholder="Password" AccentColor="Blue"/>
-            <suave:MaterialDatePicker Placeholder="Date Picker" AccentColor="BlueViolet"/>
-            <suave:MaterialTimePicker Placeholder="Time Picker" AccentColor="HotPink" />
+            <suave:MaterialEntry Placeholder="Email" Keyboard="Email" AccentColor="Green" IsValid="{Binding IsValid}"/>
+            <suave:MaterialEntry Placeholder="Regular Text" AccentColor="Orange" IsValid="{Binding IsValid}"/>
+            <suave:MaterialEntry Placeholder="Number" Keyboard="Numeric" AccentColor="Red" IsValid="{Binding IsValid}"/>
+            <suave:MaterialEntry IsPassword="True" Placeholder="Password" AccentColor="Blue" IsValid="{Binding IsValid}" InvalidColor="Lime"/>
+            <suave:MaterialEntry Placeholder="Updated Default Color" DefaultColor="Aqua" AccentColor="Fuchsia"/>
+            <suave:MaterialDatePicker Placeholder="Date Picker" AccentColor="BlueViolet" IsValid="{Binding IsValid}"/>
+            <suave:MaterialTimePicker Placeholder="Time Picker" AccentColor="HotPink" IsValid="{Binding IsValid}"/>
             <suave:MaterialPicker 
                 Placeholder="Picker"
                 AccentColor="Maroon"
                 Items="{Binding PickerData}"
                 SelectedItem="{Binding PickerSelectedItem}"
-                SelectedIndexChangedCommand="{Binding PickerSelectedIndexChangedCmd}" />
-
+                SelectedIndexChangedCommand="{Binding PickerSelectedIndexChangedCmd}" 
+                IsValid="{Binding IsValid}"/>
+            <Button Text="Switch IsValid" Command="{Binding SwitchValidCommand}"/>
         </StackLayout>
     </ScrollView>
 

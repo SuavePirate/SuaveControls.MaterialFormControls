@@ -33,6 +33,56 @@ namespace SuaveControls.MaterialForms
             matEntry.EntryField.Keyboard = (Keyboard)newVal;
         });
         public static BindableProperty AccentColorProperty = BindableProperty.Create(nameof(AccentColor), typeof(Color), typeof(MaterialTimePicker), defaultValue: Color.Accent);
+        public static BindableProperty InvalidColorProperty = BindableProperty.Create(nameof(InvalidColor), typeof(Color), typeof(MaterialEntry), Color.Red, propertyChanged: (bindable, oldVal, newVal) =>
+        {
+            var matEntry = (MaterialTimePicker)bindable;
+            matEntry.UpdateValidation();
+        });
+        public static BindableProperty DefaultColorProperty = BindableProperty.Create(nameof(DefaultColor), typeof(Color), typeof(MaterialEntry), Color.Gray, propertyChanged: (bindable, oldVal, newVal) =>
+        {
+            var matEntry = (MaterialTimePicker)bindable;
+            matEntry.UpdateValidation();
+        });
+        public static BindableProperty IsValidProperty = BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEntry), true, propertyChanged: (bindable, oldVal, newVal) =>
+        {
+            var matEntry = (MaterialTimePicker)bindable;
+            matEntry.UpdateValidation();
+        });
+
+        public bool IsValid
+        {
+            get
+            {
+                return (bool)GetValue(IsValidProperty);
+            }
+            set
+            {
+                SetValue(IsValidProperty, value);
+            }
+        }
+        public Color DefaultColor
+        {
+            get
+            {
+                return (Color)GetValue(DefaultColorProperty);
+            }
+            set
+            {
+                SetValue(DefaultColorProperty, value);
+            }
+        }
+        public Color InvalidColor
+        {
+            get
+            {
+                return (Color)GetValue(InvalidColorProperty);
+            }
+            set
+            {
+                SetValue(InvalidColorProperty, value);
+            }
+        }
+
         public TimeSpan? Time
         {
             get
@@ -105,6 +155,7 @@ namespace SuaveControls.MaterialForms
         {
             InitializeComponent();
             EntryField.BindingContext = this;
+            BottomBorder.BackgroundColor = DefaultColor;
             EntryField.Focused += (s, a) =>
             {
 				Device.BeginInvokeOnMainThread(() => {
@@ -134,7 +185,7 @@ namespace SuaveControls.MaterialForms
             };
             Picker.Unfocused += async (s, a) =>
             {
-                HiddenLabel.TextColor = Color.Gray;
+                HiddenLabel.TextColor = DefaultColor;
                 if (Time == null)
                 {
                     // animate both at the same time
@@ -166,6 +217,35 @@ namespace SuaveControls.MaterialForms
         public TimePicker GetUnderlyingPicker()
         {
             return Picker;
+        }
+
+
+
+        /// <summary>
+        /// Updates view based on validation state
+        /// </summary>
+        private void UpdateValidation()
+        {
+            if (IsValid)
+            {
+
+                BottomBorder.BackgroundColor = DefaultColor;
+                HiddenBottomBorder.BackgroundColor = AccentColor;
+                if (IsFocused)
+                {
+                    HiddenLabel.TextColor = AccentColor;
+                }
+                else
+                {
+                    HiddenLabel.TextColor = DefaultColor;
+                }
+            }
+            else
+            {
+                BottomBorder.BackgroundColor = InvalidColor;
+                HiddenBottomBorder.BackgroundColor = InvalidColor;
+                HiddenLabel.TextColor = InvalidColor;
+            }
         }
 
     }
