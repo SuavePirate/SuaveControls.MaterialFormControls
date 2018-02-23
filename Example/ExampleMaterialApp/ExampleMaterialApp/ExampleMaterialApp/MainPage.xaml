@@ -27,6 +27,7 @@
                 SelectedIndexChangedCommand="{Binding PickerSelectedIndexChangedCmd}" 
                 IsValid="{Binding IsValid}"/>
             <Button Text="Switch IsValid" Command="{Binding SwitchValidCommand}"/>
+            <suave:MaterialButton Text="Switch IsValid, But With Material" Command="{Binding SwitchValidCommand}" BackgroundColor="#03A9F4" TextColor="White"/>
         </StackLayout>
     </ScrollView>
 
