@@ -7,7 +7,7 @@
     <ProjectGuid>{B4E1E91A-8DFB-4D36-95D2-B550CE67DF2B}</ProjectGuid>
     <Description>Material Design Form controls for Xamarin.Forms.</Description>
     <PackageId>MaterialFormControls</PackageId>
-    <PackageVersion>2018.01.21-pre2</PackageVersion>
+    <PackageVersion>2018.02.22-pre1</PackageVersion>
     <Authors>SuavePirate</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -19,7 +19,7 @@
     <Owners>SuavePirate</Owners>
     <PackageTags>Xamarin Material MaterialDesign Forms Input</PackageTags>
     <Title>Material Design Xamarin Forms Elements</Title>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Added material button</PackageReleaseNotes>
     <Summary>Some Xamarin.Forms input fields built to Material Design Standards
 
 </Summary>
