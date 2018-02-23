@@ -62,6 +62,7 @@
     <Compile Include="Renderers\BorderlessPickerRenderer.cs" />
     <Compile Include="Renderers\BorderlessEditorRenderer.cs" />
     <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
+    <Compile Include="Renderers\MaterialButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
