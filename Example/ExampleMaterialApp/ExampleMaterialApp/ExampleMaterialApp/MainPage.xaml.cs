@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace ExampleMaterialApp
 {
@@ -7,6 +8,11 @@ namespace ExampleMaterialApp
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void MyButton_Clicked(object sender, EventArgs e)
+        {
+            MyButton.Elevation++;
         }
     }
 }

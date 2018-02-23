@@ -10,36 +10,38 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(MaterialButton), typeof(MaterialButtonRenderer))]
 namespace SuaveControls.MaterialForms.iOS.Renderers
 {
+
     public class MaterialButtonRenderer : ButtonRenderer
     {
         public static void Initialize()
         {
             // empty, but used for beating the linker
         }
+        protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
+        {
+            base.OnElementChanged(e);
+
+            if (e.NewElement == null)
+                return;
+
+        }
+
+        public override void Draw(CGRect rect)
+        {
+            base.Draw(rect);
+            UpdateShadow();
+        }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            CreateMaterialShadow();
+            if (e.PropertyName == "Elevation")
+            {
+                UpdateShadow();
+            }
         }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
-        {
-            base.OnElementChanged(e);
-            CreateMaterialShadow();
-        }
-
-        public override void LayoutSubviews()
-        {
-            base.LayoutIfNeeded();
-            Layer.ShadowPath = UIBezierPath.FromRect(Layer.Bounds).CGPath;
-        }
-
-
-        /// <summary>
-        /// Creates the material shadow.
-        /// </summary>
-        private void CreateMaterialShadow()
+        private void UpdateShadow()
         {
 
             var materialButton = (MaterialButton)Element;
