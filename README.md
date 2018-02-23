@@ -8,7 +8,7 @@ This project is still a work in progress and bound to see updates.
 Use the preview package from NuGet or clone the repository and reference the projects directly:
 
 ```
-Install-Package MaterialFormControls -Version 2018.1.21-pre2
+Install-Package MaterialFormControls -Version 2018.2.22-pre1
 ```
 
 ## Usage
@@ -29,6 +29,16 @@ Use each of the form controls in your XAML or C# code, and be sure to initialize
     Items="{Binding PickerData}"
     SelectedItem="{Binding PickerSelectedItem}"
     SelectedIndexChangedCommand="{Binding PickerSelectedIndexChangedCmd}" />
+ <suave:MaterialButton x:Name="MyButton" 
+      BackgroundColor="#03A9F4" 
+      TextColor="White" 
+      Text="Click to raise elevation" 
+      Elevation="1" 
+      VerticalOptions="Center" 
+      HorizontalOptions="Center"
+      WidthRequest="300"
+      BorderRadius="0"
+      Clicked="MyButton_Clicked"/>
 ```
 
 ``` csharp
@@ -36,6 +46,16 @@ BorderlessEntry.Init();
 ```
 
 Check out the example projects for more in-depth demos.
+
+## Validation and State
+
+Check out this blog post for more details https://alexdunn.org/2018/02/22/xamarin-controls-material-form-control-updates/
+
+The controls now allow for an `IsValid` state as well as updated color properties: `DefaultColor`, `AccentColor`, `InvalidColor`.
+
+This means you can create custom `Behaviors` that manage the state of the control, or you can manage it through bindings to your ViewModel.
+
+Check out the MaterialFormsBehaviors (https://github.com/SuavePirate/SuaveControls.MaterialEntryBehaviors) repository for examples and helpful Behaviors (work in progress)
 
 ## Contributing
 
