@@ -14,6 +14,7 @@ namespace SuaveControls.MaterialForms.iOS
             BorderlessTimePickerRenderer.Init();
             BorderlessPickerRenderer.Init();
             BorderlessEditorRenderer.Init();
+            MaterialButtonRenderer.Initialize();
         }
     }
 }

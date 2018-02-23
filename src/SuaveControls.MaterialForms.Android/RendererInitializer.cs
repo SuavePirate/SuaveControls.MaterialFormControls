@@ -22,6 +22,7 @@ namespace SuaveControls.MaterialForms.Android
             BorderlessPickerRenderer.Init();
             BorderlessTimePickerRenderer.Init();
             BorderlessDatePickerRenderer.Init();
+            MaterialButtonRenderer.Init();
         }
     }
 }

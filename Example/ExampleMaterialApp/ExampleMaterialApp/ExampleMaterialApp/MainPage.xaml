@@ -27,6 +27,16 @@
                 SelectedIndexChangedCommand="{Binding PickerSelectedIndexChangedCmd}" 
                 IsValid="{Binding IsValid}"/>
             <Button Text="Switch IsValid" Command="{Binding SwitchValidCommand}"/>
+            <suave:MaterialButton x:Name="MyButton" 
+                                  BackgroundColor="#03A9F4" 
+                                  TextColor="White" 
+                                  Text="Click to raise elevation" 
+                                  Elevation="1" 
+                                  VerticalOptions="Center" 
+                                  HorizontalOptions="Center"
+                                  WidthRequest="300"
+                                  BorderRadius="0"
+                                  Clicked="MyButton_Clicked"/>
         </StackLayout>
     </ScrollView>
 
