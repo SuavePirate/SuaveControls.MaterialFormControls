@@ -9,7 +9,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="1"/>
             </Grid.RowDefinitions>
-            <Label x:Name="HiddenLabel" FontSize="10" IsVisible="False" Margin="0"/>
+            <Label x:Name="HiddenLabel" FontSize="Micro" IsVisible="False" Margin="0"/>
             <views:BorderlessEntry x:Name="EntryField" Text="{Binding Text, Mode=TwoWay}" Margin="0,12,0,0"/>
             <BoxView x:Name="BottomBorder" Grid.Row="1" HeightRequest="1" Margin="0" HorizontalOptions="FillAndExpand"/>
             <BoxView x:Name="HiddenBottomBorder"  Grid.Row="1" HeightRequest="1" Margin="0" WidthRequest="0" HorizontalOptions="Center"/>
