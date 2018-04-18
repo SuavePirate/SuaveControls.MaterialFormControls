@@ -146,6 +146,7 @@ namespace SuaveControls.MaterialForms
             }
         }
 
+        [TypeConverter(typeof(FontSizeConverter))]
         public double HiddenLabelTextSize
         {
             get
