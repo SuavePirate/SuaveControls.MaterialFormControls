@@ -47,10 +47,30 @@ namespace SuaveControls.MaterialForms
             var matEntry = (MaterialEntry)bindable;
             matEntry.UpdateValidation();
         });
+        public static BindableProperty PlaceholderColorProperty = BindableProperty.Create(nameof(PlaceholderColorProperty), typeof(Color), typeof(MaterialEntry), Color.Gray, propertyChanged: (bindable, oldVal, newVal) =>
+        {
+            var matEntry = (MaterialEntry)bindable;
+            matEntry.EntryField.PlaceholderColor = (Color)newVal;
+        });
+        public static BindableProperty TextBackgroundColorProperty = BindableProperty.Create(nameof(TextBackgroundColorProperty), typeof(Color), typeof(MaterialEntry), Color.Transparent, propertyChanged: (bindable, oldVal, newVal) =>
+        {
+            var matEntry = (MaterialEntry)bindable;
+            matEntry.EntryField.BackgroundColor = (Color)newVal;
+        });
+        public static BindableProperty TextColorProperty = BindableProperty.Create(nameof(DefaultColor), typeof(Color), typeof(MaterialEntry), Color.Black, propertyChanged: (bindable, oldVal, newVal) =>
+        {
+            var matEntry = (MaterialEntry)bindable;
+            matEntry.EntryField.TextColor = (Color)newVal;
+        });
         public static BindableProperty IsValidProperty = BindableProperty.Create(nameof(IsValid), typeof(bool), typeof(MaterialEntry), true, propertyChanged: (bindable, oldVal, newVal) =>
         {
             var matEntry = (MaterialEntry)bindable;
             matEntry.UpdateValidation();
+        });
+        public static BindableProperty HiddenLabelTextSizeProperty = BindableProperty.Create(nameof(HiddenLabelTextSizeProperty), typeof(double), typeof(MaterialEntry), 10.0, propertyChanged: (bindable, oldVal, newVal) =>
+        {
+            var matEntry = (MaterialEntry)bindable;
+            matEntry.HiddenLabel.FontSize = (double)newVal;
         });
         #endregion
 
@@ -99,6 +119,55 @@ namespace SuaveControls.MaterialForms
             set
             {
                 SetValue(AccentColorProperty, value);
+            }
+        }
+
+        public Color TextBackgroundColor
+        {
+            get
+            {
+                return (Color)GetValue(TextBackgroundColorProperty);
+            }
+            set
+            {
+                SetValue(TextBackgroundColorProperty, value);
+            }
+        }
+
+        public Color TextColor
+        {
+            get
+            {
+                return (Color)GetValue(TextColorProperty);
+            }
+            set
+            {
+                SetValue(TextColorProperty, value);
+            }
+        }
+
+        [TypeConverter(typeof(FontSizeConverter))]
+        public double HiddenLabelTextSize
+        {
+            get
+            {
+                return (double)GetValue(HiddenLabelTextSizeProperty);
+            }
+            set
+            {
+                SetValue(HiddenLabelTextSizeProperty, value);
+            }
+        }
+
+        public Color PlaceholderColor
+        {
+            get
+            {
+                return (Color)GetValue(PlaceholderColorProperty);
+            }
+            set
+            {
+                SetValue(PlaceholderColorProperty, value);
             }
         }
         public Keyboard Keyboard
