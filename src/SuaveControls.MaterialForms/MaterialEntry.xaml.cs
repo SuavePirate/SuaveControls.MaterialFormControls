@@ -67,7 +67,7 @@ namespace SuaveControls.MaterialForms
             var matEntry = (MaterialEntry)bindable;
             matEntry.UpdateValidation();
         });
-        public static BindableProperty HiddenLabelTextSizeProperty = BindableProperty.Create(nameof(HiddenLabelTextSizeProperty), typeof(double), typeof(MaterialEntry), 10, propertyChanged: (bindable, oldVal, newVal) =>
+        public static BindableProperty HiddenLabelTextSizeProperty = BindableProperty.Create(nameof(HiddenLabelTextSizeProperty), typeof(double), typeof(MaterialEntry), 10.0, propertyChanged: (bindable, oldVal, newVal) =>
         {
             var matEntry = (MaterialEntry)bindable;
             matEntry.HiddenLabel.FontSize = (double)newVal;
