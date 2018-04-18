@@ -69,4 +69,4 @@ Awesome contributors:
 - Greg Gacura (https://github.com/cosmo777)
 - welcometoall (https://github.com/welcometoall)
 - Evgeny Zborovsky (https://github.com/yuv4ik)
-
+- ArtomjP (https://github.com/ArtjomP)
