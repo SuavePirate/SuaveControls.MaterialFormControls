@@ -4,6 +4,7 @@ Some Xamarin.Forms input fields built to Material Design Standards
 This project is still a work in progress and bound to see updates.
 
 ## Installation
+[![NuGet version](https://badge.fury.io/nu/MaterialFormControls.svg)](https://badge.fury.io/nu/MaterialFormControls)
 
 Use the preview package from NuGet or clone the repository and reference the projects directly:
 
@@ -69,4 +70,4 @@ Awesome contributors:
 - Greg Gacura (https://github.com/cosmo777)
 - welcometoall (https://github.com/welcometoall)
 - Evgeny Zborovsky (https://github.com/yuv4ik)
-- ArtomjP (https://github.com/ArtjomP)
+- ArtjomP (https://github.com/ArtjomP)
