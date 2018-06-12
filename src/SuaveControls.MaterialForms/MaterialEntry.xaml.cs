@@ -72,6 +72,11 @@ namespace SuaveControls.MaterialForms
             var matEntry = (MaterialEntry)bindable;
             matEntry.HiddenLabel.FontSize = (double)newVal;
         });
+        public static BindableProperty CompletedProperty = BindableProperty.Create(nameof(Completed), typeof(EventHandler), typeof(MaterialEntry), propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            var matEntry = (MaterialEntry)bindable;
+            matEntry.Completed = (EventHandler)newValue;
+        });
         #endregion
 
         #region Public Properties
@@ -202,7 +207,7 @@ namespace SuaveControls.MaterialForms
             }
             set
             {
-               SetValue(TextProperty, value);
+                SetValue(TextProperty, value);
             }
         }
         public string Placeholder
@@ -217,7 +222,13 @@ namespace SuaveControls.MaterialForms
             }
         }
 
-#endregion
+        public EventHandler Completed
+        {
+            get => null;
+            set => EntryField.Completed += value;
+        }
+
+        #endregion
 
         public MaterialEntry()
         {
@@ -257,7 +268,7 @@ namespace SuaveControls.MaterialForms
         /// <returns>The layout unfocused.</returns>
         private async Task CalculateLayoutUnfocused()
         {
-            if(IsValid)
+            if (IsValid)
             {
                 HiddenLabel.TextColor = DefaultColor;
                 BottomBorder.BackgroundColor = DefaultColor;
@@ -308,12 +319,12 @@ namespace SuaveControls.MaterialForms
         /// </summary>
         private void UpdateValidation()
         {
-            if(IsValid)
+            if (IsValid)
             {
 
                 BottomBorder.BackgroundColor = DefaultColor;
                 HiddenBottomBorder.BackgroundColor = AccentColor;
-                if(IsFocused)
+                if (IsFocused)
                 {
                     HiddenLabel.TextColor = AccentColor;
                 }
