@@ -77,7 +77,6 @@ namespace SuaveControls.MaterialForms
             var matEntry = (MaterialEntry)bindable;
             matEntry.Completed = (EventHandler)newValue;
         });
-
         #endregion
 
         #region Public Properties
