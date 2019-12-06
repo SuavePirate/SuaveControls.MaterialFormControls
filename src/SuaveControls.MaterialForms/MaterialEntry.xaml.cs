@@ -25,7 +25,11 @@ namespace SuaveControls.MaterialForms
             matEntry.EntryField.Placeholder = (string)newval;
             matEntry.HiddenLabel.Text = (string)newval;
         });
-
+        public static readonly BindableProperty IsReadOnlyProperty = BindableProperty.Create(nameof(IsReadOnly), typeof(bool), typeof(bool),false, propertyChanged: (bindable, oldVal, newval) =>
+        {
+            var matEntry = ((MaterialEntry)bindable);
+            matEntry.EntryField.IsReadOnly = (bool)newval;
+        });
         public static BindableProperty IsPasswordProperty = BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(MaterialEntry), defaultValue: false, propertyChanged: (bindable, oldVal, newVal) =>
         {
             var matEntry = (MaterialEntry)bindable;
@@ -163,7 +167,11 @@ namespace SuaveControls.MaterialForms
                 SetValue(HiddenLabelTextSizeProperty, value);
             }
         }
-
+        public bool IsReadOnly
+        {
+            get => (bool)GetValue(IsReadOnlyProperty);
+            set => SetValue(IsReadOnlyProperty, value);
+        }
         public Color PlaceholderColor
         {
             get
