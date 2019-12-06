@@ -25,6 +25,11 @@ namespace SuaveControls.MaterialForms
             matEntry.EntryField.Placeholder = (string)newval;
             matEntry.HiddenLabel.Text = (string)newval;
         });
+        public static readonly BindableProperty MaxLengthProperty = BindableProperty.Create(nameof(MaxLength), typeof(int), typeof(int), int.MaxValue, propertyChanged: (bindable, oldVal, newval) =>
+        {
+            var matEntry = ((MaterialEntry)bindable);
+            matEntry.EntryField.MaxLength = (int)newval;
+        });
         public static readonly BindableProperty IsReadOnlyProperty = BindableProperty.Create(nameof(IsReadOnly), typeof(bool), typeof(bool),false, propertyChanged: (bindable, oldVal, newval) =>
         {
             var matEntry = ((MaterialEntry)bindable);
@@ -171,6 +176,11 @@ namespace SuaveControls.MaterialForms
         {
             get => (bool)GetValue(IsReadOnlyProperty);
             set => SetValue(IsReadOnlyProperty, value);
+        }
+        public int MaxLength
+        {
+            get => (int)GetValue(MaxLengthProperty);
+            set => SetValue(MaxLengthProperty, value);
         }
         public Color PlaceholderColor
         {
